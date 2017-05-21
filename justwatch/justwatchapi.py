@@ -26,11 +26,11 @@ class JustWatch:
 			"cinema_release":null,
 			"query":null
 		}
-		for key, value in self.kwargs.items():
-			if key in payload.keys():
+		for key, value in list(self.kwargs.items()):
+			if key in list(payload.keys()):
 				payload[key] = value
 			else:
-				print('{} is not a valid keyword'.format(key))
+				print(('{} is not a valid keyword'.format(key)))
 		header = {'User-Agent':'JustWatch Python client (github.com/dawoudt/JustWatchAPI)'}
 		api_url = 'https://api.justwatch.com/titles/{}_{}/popular'.format(self.language, self.country)
 		r = requests.post(api_url, json=payload, headers=header)
